@@ -1,36 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h3>Add new Servers or Blueprints!</h3>
+      <h3>Add New Tasks!</h3>
       <br />
-      <label>Server Name</label>
-      <input type="text" class="form-control" [(ngModel)]="newServerName">
+      <label>Task:</label>
+      <input type="text" class="form-control" [(ngModel)]="task">
       <br />
-      <label>Server Content</label>
-      <input type="text" class="form-control" [(ngModel)]="newServerContent">
-      <br />
-      <button
-        class="btn btn-primary"
-        (click)="onAddServer()">Add Server</button>&nbsp;
-      <button
-        class="btn btn-primary"
-        (click)="onAddBlueprint()">Add Server Blueprint</button>
+      <button class="btn btn-primary" (click)="onAddTask()">Add Task</button>
     </div>
   </div>
-  <hr>
+  <hr />
   <div class="row">
     <div class="col-xs-12">
-      <div
-        class="panel panel-default"
-        *ngFor="let element of serverElements">
-        <div class="panel-heading">{{ element.name }}</div>
-        <div class="panel-body">
-          <p>
-            <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
-            <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
-          </p>
-        </div>
-      </div>
+      <app-item *ngFor="let task of tasks; let i = index" 
+        [item]="{ index: i , name: task }" 
+        (itemDeleted)="onDeleteTask($event)">
+      </app-item>
     </div>
   </div>
 </div>

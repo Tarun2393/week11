@@ -5,3 +5,9 @@
 h3, p {
   color: blue;
 }
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #333;
+}
